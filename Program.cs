@@ -4,10 +4,21 @@ class Program
 {
     static void Main()
     {
-        Menu();
+        while (Menu())
+        {
+            try
+            {
+                Menu();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro não tratado, pressione enter para retornar ao menu.");
+                Console.ReadLine();
+            }
+        }
     }
 
-    static void Menu()
+    static bool Menu()
     {
         while (true)
         {
@@ -24,7 +35,7 @@ class Program
             Console.WriteLine("- 8. Atividade 08");
             Console.WriteLine("- 9. Atividade 09");
             Console.WriteLine("- 10. Atividade 10");
-            Console.WriteLine("0. Sair\n");
+            Console.WriteLine("- 0. Sair\n");
 
             Console.Write("Opção: ");
             string? opcao = Console.ReadLine();
@@ -62,7 +73,7 @@ class Program
                     Atividade10();
                     break;
                 case "0":
-                    return;
+                    return false;
                 default:
                     Console.WriteLine("Opção inválida. Pressione Enter para continuar.");
                     Console.ReadLine();
